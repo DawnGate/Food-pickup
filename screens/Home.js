@@ -15,8 +15,6 @@ const Home = ({ navigation }) => {
   const [city, setCity] = useState("NY");
   const [activeTab, setActiveTab] = useState("Delivery");
   useEffect(() => {
-    console.log("change");
-    console.log(activeTab);
     setRestaurantData(
       localRestaurants.filter((item) => item.type.includes(activeTab))
     );
