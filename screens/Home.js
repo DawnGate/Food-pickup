@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import BottomTabs from "../components/BottomTabs";
 
 const Home = ({ navigation }) => {
-  console.log(navigation);
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
   const [city, setCity] = useState("NY");
   const [activeTab, setActiveTab] = useState("Delivery");

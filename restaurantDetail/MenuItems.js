@@ -18,27 +18,29 @@ const MenuItems = (props) => {
   const cartItems = useSelector((state) => state.cart.itemsSelected);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView>
       {props.foods.map((item, index) => {
         return (
           <View key={index}>
             <View style={styles.menuItemStyle}>
-              <BouncyCheckBox
-                iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
-                innerIconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
-                fillColor="green"
-                isChecked={Boolean(
-                  cartItems.find((i) => i.title === item.title)
-                )}
-                onPress={() => {
-                  dispath(
-                    changeCart({
-                      item: item,
-                      name: props.restaurantName,
-                    })
-                  );
-                }}
-              />
+              {!props.hideCheckbox && (
+                <BouncyCheckBox
+                  iconStyle={{ borderColor: "lightgray", borderRadius: 0 }}
+                  innerIconStyle={{ borderRadius: 0, borderColor: "lightgray" }}
+                  fillColor="green"
+                  isChecked={Boolean(
+                    cartItems.find((i) => i.title === item.title)
+                  )}
+                  onPress={() => {
+                    dispath(
+                      changeCart({
+                        item: item,
+                        name: props.restaurantName,
+                      })
+                    );
+                  }}
+                />
+              )}
               <FoodInfo
                 title={item.title}
                 description={item.description}
